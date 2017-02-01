@@ -37,6 +37,8 @@ app.controller('LoginCtrl', function ($scope, authFactory, $location) {
       // The signed-in user info.
       var user = result.user;
       // ...
+    }).then(function (){
+      $location.url("/")
     }).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
