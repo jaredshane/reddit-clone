@@ -1,5 +1,3 @@
-console.log('hey')
-
 const app = angular.module('redditApp', ['ngRoute'])
 
 // Initialize Firebase
@@ -10,7 +8,6 @@ firebase.initializeApp({
   storageBucket: "reddit-clone-b97a6.appspot.com",
   messagingSenderId: "515019203543"
 });
-
 
 app.config(($routeProvider, $locationProvider) => {
   $locationProvider.hashPrefix('')
