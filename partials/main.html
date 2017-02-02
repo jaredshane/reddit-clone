@@ -1,15 +1,36 @@
-<div class="container">
+<div class ="container header">
   <h1>Welcome to clone-it</h1>
   <a class="waves-effect waves-light btn newPost ng-hide" data-target="modal1">Upload An Image</a>
   <a class="waves-effect waves-light btn loginButton" href="#/login">Login</a>
   <a ng-click="logoutofFirebase($event)" class="waves-effect waves-light btn ng-hide logoutButton">Logout</a>
 </div>
 
+<div class="container">
+    <div ng-repeat="(key, val) in data">
+        <div class="mainArticle container row">
+            <div class="vote col s1">
+                <div class=" "><img class="upVote voteImg" src="/img/james.png" alt="westter"></div>
+                <div class="">vote</div>
+                <div class="downVote"><img class="downVote voteImg" src="/img/joel.png" alt="olleg"></div>
+            </div>
+            <div class="col s11">
+                <a href="{{val.img}}"><img class="mainPageImage" ng-class="{true: 'tambo'}[val.tamboClass]" src="{{val.img}}" alt="{{val.title}}"></a>
+                <div class="mainPageTitleBlock">
+                    <a href="{{val.img}}" class="mainPageTitle">{{val.title}}</a>
+                    <div class="">Submitted by: {{val.username}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
 <!-- Modal Structure -->
 <div id="modal1" class="modal">
   <div class="modal-content">
     <h4>Upload An Image</h4>
-    <input ng-model="title" type="text" placeholder="Title">
+    <input ng-model="title" type="text" placeholder="Title/Description">
     <form>
         <div class="file-field input-field">
           <div class="btn">
@@ -19,14 +40,15 @@
           <div class="file-path-wrapper">
             <input class="file-path validate" type="text">
           </div>
-          <input type="checkbox" id="test5" />
-          <label for="test5">Is it Tambo</label>
+              <input ng-model="checked" type="checkbox" id="test5"/>
+              <label for="test5">Is it Tambo?</label>
         </div>
       </form>
-      <img id="myImg">
+      <img class='uploadImage' id="myImg">
   </div>
   <div class="modal-footer">
-    <a href="#"  ng-click='saveFirebase(title)' class=" modal-action modal-close waves-effect waves-green btn-flat">Save</a>
+    <a href="#"  ng-click='saveFirebase(title, checked)' class=" modal-action modal-close waves-effect waves-red btn-flat">Save</a>
+    <a href="#" class=" modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
   </div>
 
 </div>
