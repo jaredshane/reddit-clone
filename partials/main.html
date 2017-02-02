@@ -1,6 +1,8 @@
 <div class ="container header">
-    <h1>Welcome to clone-it</h1>
-    <a class="waves-effect waves-light btn" data-target="modal1">Upload An Image</a>
+  <h1>Welcome to clone-it</h1>
+  <a class="waves-effect waves-light btn newPost ng-hide" data-target="modal1">Upload An Image</a>
+  <a class="waves-effect waves-light btn loginButton" href="#/login">Login</a>
+  <a ng-click="logoutofFirebase($event)" class="waves-effect waves-light btn ng-hide logoutButton">Logout</a>
 </div>
 
 <div class="container">
@@ -20,6 +22,7 @@
             </div>
         </div>
     </div>
+
 
 </div>
 
@@ -47,4 +50,5 @@
     <a href="#"  ng-click='saveFirebase(title, checked)' class=" modal-action modal-close waves-effect waves-red btn-flat">Save</a>
     <a href="#" class=" modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
   </div>
+
 </div>

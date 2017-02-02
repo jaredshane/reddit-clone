@@ -1,4 +1,4 @@
-app.controller('MainCtrl', function ($http,$scope) {
+app.controller('MainCtrl', function ($http, $scope, $location) {
   console.log('hey, this is the MainCtrl')
 
   $scope.getFirebase = () =>{
@@ -40,7 +40,7 @@ app.controller('MainCtrl', function ($http,$scope) {
             }).catch(function (error){
             })
         }
-   )}
+   )} //end of handleFiles
 
    $scope.saveFirebase = (title,checkbox) => {
 
@@ -53,6 +53,7 @@ app.controller('MainCtrl', function ($http,$scope) {
             'upvote' : 0,
             'username' : 'dontCare',
             'tamboClass' : checkbox
+            'username' : firebase.auth().currentUser.displayName
         }
         console.log("article", article);
            $http.post('https://reddit-clone-b97a6.firebaseio.com/posts.json', article)
@@ -61,6 +62,12 @@ app.controller('MainCtrl', function ($http,$scope) {
                $scope.getFirebase()
            })
         })
-   }
+   } //end of saveFirebase
 
-})
+  $scope.logoutofFirebase = function (e) {
+    firebase.auth().signOut()
+    $location.url("/login")
+  }
+
+
+}) //end of controller
