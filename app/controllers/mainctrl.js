@@ -40,7 +40,7 @@ app.controller('MainCtrl', function ($http,$scope) {
             'title' : title,
             'img': data,
             'upvote' : 0,
-            'username' : 'dontCare'
+            'username' : firebase.auth().currentUser.displayName
         }
         console.log("article", article);
            $http.post('https://reddit-clone-b97a6.firebaseio.com/.json', article)
