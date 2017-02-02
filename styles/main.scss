@@ -1,0 +1,15 @@
+@import "image.scss";
+@import "mainPageText.scss";
+@import "article.scss";
+@import "vote.scss";
+
+h1 {
+  color: darkgoldenrod;
+}
+body{
+    background-color: rebeccapurple;
+}
+
+.header{
+    padding-bottom: 20px;
+}
