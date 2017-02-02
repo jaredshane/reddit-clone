@@ -1,5 +1,14 @@
 app.controller('MainCtrl', function ($http,$scope) {
   console.log('hey, this is the MainCtrl')
+
+  $scope.getFirebase = () =>{
+      $http.get('https://reddit-clone-b97a6.firebaseio.com/posts.json')
+      .then((res)=>{
+          console.log("res", res.data);
+          $scope.data = res.data;
+      })
+  }
+  $scope.getFirebase()
   //modal function
   $(document).ready(function(){
     $('.modal').modal();
@@ -33,17 +42,25 @@ app.controller('MainCtrl', function ($http,$scope) {
         }
    )}
 
-   $scope.saveFirebase = (title) => {
+   $scope.saveFirebase = (title,checkbox) => {
+
+       console.log("checkbox", checkbox);
        let url = storageRef.child(`images/${fileList[0].name}`).getDownloadURL()
         .then((data)=>{
             const article = {
             'title' : title,
             'img': data,
             'upvote' : 0,
-            'username' : 'dontCare'
+            'username' : 'dontCare',
+            'tamboClass' : checkbox
         }
         console.log("article", article);
-           $http.post('https://reddit-clone-b97a6.firebaseio.com/.json', article)
+           $http.post('https://reddit-clone-b97a6.firebaseio.com/posts.json', article)
+           .then(()=>{
+               console.log("HeyGirlHey");
+               $scope.getFirebase()
+           })
         })
    }
+
 })
