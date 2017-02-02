@@ -1,4 +1,4 @@
-app.controller('MainCtrl', function ($http,$scope) {
+app.controller('MainCtrl', function ($http, $scope, $location) {
   console.log('hey, this is the MainCtrl')
   //modal function
   $(document).ready(function(){
@@ -31,7 +31,7 @@ app.controller('MainCtrl', function ($http,$scope) {
             }).catch(function (error){
             })
         }
-   )}
+   )} //end of handleFiles
 
    $scope.saveFirebase = (title) => {
        let url = storageRef.child(`images/${fileList[0].name}`).getDownloadURL()
@@ -45,5 +45,12 @@ app.controller('MainCtrl', function ($http,$scope) {
         console.log("article", article);
            $http.post('https://reddit-clone-b97a6.firebaseio.com/.json', article)
         })
-   }
-})
+   } //end of saveFirebase
+
+  $scope.logoutofFirebase = function (e) {
+    firebase.auth().signOut()
+    $location.url("/login")
+  }
+
+
+}) //end of controller
