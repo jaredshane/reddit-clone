@@ -6,20 +6,46 @@ app.controller('LoginCtrl', function ($scope, authFactory, $location) {
     var email = e
     var password = p
 
+
     authFactory.login(email, password)
     .then(()=>{
       $location.url("/")
     })
   }  //end of $scope.loginButton
 
-  $scope.registerButton = function (e, p) {
+  $scope.registerButton = function (e, p, u) {
 
-    var email = e
-    var password = p
+    var email = e;
+    var password = p;
+    var username = u;
+
+
+
+
+    console.log(username)
+
 
 
     authFactory.register(email, password)
-      .then(()=>{
+      .then((user)=>{
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            // User is signed in.
+            user.updateProfile({
+              displayName: username
+            }).then(function() {
+              // Update successful.
+              console.log('updated!')
+              console.log("disaplyName", firebase.auth().currentUser.displayName)
+            }, function(error) {
+              // An error happened.
+              console.log(error)
+            });
+
+  } else {
+    // No user is signed in.
+  }
+});
         //if user successfully registers, redirects to homepage
         $location.url("/")
       })
