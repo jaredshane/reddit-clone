@@ -1,15 +1,20 @@
 .mainPageImage{
-    max-width: 80px;
-    max-height: 80px;
+    max-width: 70px;
+    max-height: 70px;
     display: inline-block;
 
+}
+
+.tambo:hover{
+    filter: blur(0px);
 }
 
 .uploadImage{
     max-width: 300px;
     max-height: 300px;
+    padding-top: 20px;
 }
 
 .tambo{
-    filter: blur(15px);
+    filter: blur(10px);
 }
