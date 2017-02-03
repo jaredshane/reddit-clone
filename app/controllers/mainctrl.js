@@ -1,14 +1,17 @@
-app.controller('MainCtrl', function ($http, $scope, $location) {
-  console.log('hey, this is the MainCtrl')
+app.controller('MainCtrl', function ($http, $scope, uploadFactory, votingFactory, $q) {
 
-  $scope.getFirebase = () =>{
-      $http.get('https://reddit-clone-b97a6.firebaseio.com/posts.json')
-      .then((res)=>{
-          console.log("res", res.data);
-          $scope.data = res.data;
-      })
-  }
-  $scope.getFirebase()
+  $scope.logout = uploadFactory.logoutofFirebase
+  $scope.james = votingFactory.voteUp
+  $scope.joel = votingFactory.voteDown
+
+
+  uploadFactory
+  .getFirebase()
+  .then((res)=>{
+      $scope.votes = res;
+      console.log("$scope.votes", $scope.votes);
+      $scope.user = firebase.auth().currentUser.displayName;
+  })
   //modal function
   $(document).ready(function(){
     $('.modal').modal();
