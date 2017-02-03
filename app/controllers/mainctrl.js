@@ -17,8 +17,6 @@ app.controller('MainCtrl', function ($http, $scope, $location) {
   let storageRef = firebase.storage().ref();
   let fileList;
 
-  // let fileList;
-
   console.log(storageRef.child('images'))
 
   let inputElement = document.getElementById('fileInput');
@@ -50,24 +48,16 @@ app.controller('MainCtrl', function ($http, $scope, $location) {
             const article = {
             'title' : title,
             'img': data,
-            'upvote' : 0,
-            'username' : 'dontCare',
-            'tamboClass' : checkbox
+            'vote' : 0,
+            'tamboClass' : checkbox,
             'username' : firebase.auth().currentUser.displayName
         }
         console.log("article", article);
            $http.post('https://reddit-clone-b97a6.firebaseio.com/posts.json', article)
            .then(()=>{
                console.log("HeyGirlHey");
-               $scope.getFirebase()
            })
         })
    } //end of saveFirebase
-
-  $scope.logoutofFirebase = function (e) {
-    firebase.auth().signOut()
-    $location.url("/login")
-  }
-
 
 }) //end of controller
