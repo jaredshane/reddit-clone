@@ -44,3 +44,7 @@ app.config(($routeProvider, $locationProvider) => {
     })
 
 })
+
+var hue = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+
+$('body').css('background-color', hue);
