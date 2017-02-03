@@ -1,4 +1,4 @@
-const app = angular.module('redditApp', ['ngRoute'])
+const app = angular.module('redditApp', ['ngRoute', 'angular-toArrayFilter'])
 
 // Initialize Firebase
 firebase.initializeApp({

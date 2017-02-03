@@ -1,29 +1,27 @@
 <div class ="container header">
-  <h1>Welcome to clone-it</h1>
+  <h1>Welcome {{user}} to clone-it</h1>
   <a class="waves-effect waves-light btn newPost ng-hide" data-target="modal1">Upload An Image</a>
   <a class="waves-effect waves-light btn loginButton" href="#/login">Login</a>
-  <a ng-click="logoutofFirebase($event)" class="waves-effect waves-light btn ng-hide logoutButton">Logout</a>
+  <a ng-click="logout($event)" class="waves-effect waves-light btn ng-hide logoutButton">Logout</a>
 </div>
 
 <div class="container">
-    <div ng-repeat="(key, val) in data">
+    <div ng-repeat="each in votes | orderBy:'-vote'" >
         <div class="mainArticle container row">
             <div class="vote col s1">
-                <div class=" "><img class="upVote voteImg" src="/img/james.png" alt="westter"></div>
-                <div class="">vote</div>
-                <div class="downVote"><img class="downVote voteImg" src="/img/joel.png" alt="olleg"></div>
+                <div><img ng-click="each.vote=each.vote+1; james(each.firebase, each.vote)" class="upVote voteImg" src="/img/james.png" alt="westter"></div>
+                <div class="">{{each.vote}}</div>
+                <div><img ng-click=" each.vote=each.vote-1; joel(each.firebase, each.vote)" class="downVote voteImg" src="/img/joel.png" alt="olleg"></div>
             </div>
             <div class="col s11">
-                <a href="{{val.img}}"><img class="mainPageImage" ng-class="{true: 'tambo'}[val.tamboClass]" src="{{val.img}}" alt="{{val.title}}"></a>
+                <a href="{{each.img}}"><img class="mainPageImage" ng-class="{true: 'tambo'}[each.tamboClass]" ng-src="{{each.img}}" alt="{{each.title}}"></a>
                 <div class="mainPageTitleBlock">
-                    <a href="{{val.img}}" class="mainPageTitle">{{val.title}}</a>
-                    <div class="">Submitted by: {{val.username}}</div>
+                    <a href="{{each.img}}" class="mainPageTitle">{{each.title}}</a>
+                    <div class="submitted">Submitted by: {{each.username}}</div>
                 </div>
             </div>
         </div>
     </div>
-
-
 </div>
 
 <!-- Modal Structure -->
