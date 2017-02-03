@@ -2,14 +2,25 @@
 @import "mainPageText.scss";
 @import "article.scss";
 @import "vote.scss";
+@import "login.scss";
 
 h1 {
   color: darkgoldenrod;
 }
-body{
-    background-color: rebeccapurple;
-}
 
 .header{
     padding-bottom: 20px;
+}
+
+.btn {
+  background-color: whitesmoke;
+  color: black;
+}
+
+.btn:hover {
+  background-color: blanchedalmond;
+}
+
+.submitted{
+    color: darkgoldenrod;
 }

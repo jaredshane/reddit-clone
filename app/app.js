@@ -1,4 +1,4 @@
-const app = angular.module('redditApp', ['ngRoute'])
+const app = angular.module('redditApp', ['ngRoute', 'angular-toArrayFilter'])
 
 // Initialize Firebase
 firebase.initializeApp({
@@ -11,10 +11,40 @@ firebase.initializeApp({
 
 app.config(($routeProvider, $locationProvider) => {
   $locationProvider.hashPrefix('')
+
+  const showHideLogout = {
+  showHideLogout: function() {
+     const authReady = firebase.auth().onAuthStateChanged(user => {
+       authReady()
+         if (!user) {
+           $('.logoutButton').addClass('ng-hide')
+           $('.loginButton').removeClass('ng-hide')
+           $('.newPost').addClass('ng-hide')
+         } else if (user) {
+           $('.logoutButton').removeClass('ng-hide')
+           $('.loginButton').addClass("ng-hide")
+           $('.newPost').removeClass('ng-hide')
+         }
+
+       }) //authReady
+
+    }
+  } //showHideLogout
+
   $routeProvider
     .when('/', {
       controller: 'MainCtrl',
-      templateUrl: 'partials/main.html'
+      templateUrl: 'partials/main.html',
+      resolve: showHideLogout
+    })
+    .when('/login', {
+      controller: 'LoginCtrl',
+      templateUrl: 'partials/login.html',
+      resolve: showHideLogout
     })
 
 })
+
+var hue = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+
+$('body').css('background-color', hue);
