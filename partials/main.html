@@ -1,5 +1,5 @@
 <div class ="container header">
-  <h1>Welcome {{user}} to clone-it</h1>
+  <h1>Welcome {{user}} to WestLegg-it</h1>
   <a class="waves-effect waves-light btn newPost ng-hide" data-target="modal1">Upload An Image</a>
   <a class="waves-effect waves-light btn loginButton" href="#/login">Login</a>
   <a ng-click="logout($event)" class="waves-effect waves-light btn ng-hide logoutButton">Logout</a>
@@ -10,7 +10,7 @@
         <div class="mainArticle container row">
             <div class="vote col s1">
                 <div><img ng-click="each.vote=each.vote+1; james(each.firebase, each.vote)" class="upVote voteImg" src="/img/james.png" alt="westter"></div>
-                <div class="">{{each.vote}}</div>
+                <div class="voteCount">{{each.vote}}</div>
                 <div><img ng-click=" each.vote=each.vote-1; joel(each.firebase, each.vote)" class="downVote voteImg" src="/img/joel.png" alt="olleg"></div>
             </div>
             <div class="col s11">
