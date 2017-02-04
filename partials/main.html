@@ -9,9 +9,9 @@
     <div ng-repeat="each in votes | orderBy:'-vote'" >
         <div class="mainArticle container row">
             <div class="vote col s1">
-                <div><img ng-click="each.vote=each.vote+1; james(each.firebase, each.vote)" class="upVote voteImg" src="/img/james.png" alt="westter"></div>
+                <div><img ng-click="each.vote=each.vote+1; james(each.firebase, each.vote)" class="upVote voteImg" src="img/james.png" alt="westter"></div>
                 <div class="voteCount">{{each.vote}}</div>
-                <div><img ng-click=" each.vote=each.vote-1; joel(each.firebase, each.vote)" class="downVote voteImg" src="/img/joel.png" alt="olleg"></div>
+                <div><img ng-click=" each.vote=each.vote-1; joel(each.firebase, each.vote)" class="downVote voteImg" src="img/joel.png" alt="olleg"></div>
             </div>
             <div class="col s11">
                 <a href="{{each.img}}"><img class="mainPageImage" ng-class="{true: 'tambo'}[each.tamboClass]" ng-src="{{each.img}}" alt="{{each.title}}"></a>
